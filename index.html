@@ -1,183 +1,560 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jason Gage Law Office</title>
   <meta name="description" content="Other people Break it · I help Fix it · Practical legal solutions for individuals and small business.">
-
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html { scroll-behavior: smooth; }
-  </style>
-
-  <!-- Preload hero -->
-  <link rel="preload" as="image" href="assets/hero.jpg">
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:type" content="website">
   <meta property="og:title" content="Jason Gage Law Office">
   <meta property="og:description" content="Other people Break it · I help Fix it · Practical legal solutions for individuals and small business.">
   <meta property="og:image" content="assets/hero.jpg">
+  <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Jason Gage Law Office">
-  <meta name="twitter:description" content="Other people Break it · I help Fix it · Practical legal solutions for individuals and small business.">
-  <meta name="twitter:image" content="assets/hero.jpg">
+  <title>Jason Gage Law Office</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-  <meta name="theme-color" content="#facc15">
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: #F7F4EF;
+      color: #1A1A18;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      background: #1A1A18;
+      padding: 0 48px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      color: #F7F4EF;
+      letter-spacing: 0.04em;
+      font-weight: 400;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      color: #A09C94;
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: #F7F4EF; }
+
+    .nav-links a.nav-cta {
+      color: #F7F4EF;
+      border: 0.5px solid #5A5750;
+      padding: 6px 16px;
+      border-radius: 2px;
+      transition: border-color 0.2s;
+    }
+
+    .nav-links a.nav-cta:hover { border-color: #A09C94; }
+
+    /* HERO */
+    #hero {
+      background: #1A1A18;
+      padding: 96px 48px 80px;
+      border-bottom: 1px solid #2E2E2A;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #6B6760;
+      margin-bottom: 28px;
+    }
+
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 6vw, 60px);
+      font-weight: 700;
+      color: #F7F4EF;
+      line-height: 1.08;
+      max-width: 680px;
+      margin-bottom: 16px;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: #C4B89A;
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      color: #6B6760;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      margin-bottom: 48px;
+    }
+
+    .hero-contact {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-contact a {
+      font-size: 13px;
+      font-weight: 500;
+      color: #F7F4EF;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .hero-contact a:hover { color: #C4B89A; }
+
+    .hero-contact .sep {
+      color: #3A3A36;
+      font-size: 12px;
+    }
+
+    /* BIO */
+    #about {
+      padding: 72px 48px;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 64px;
+      align-items: start;
+      border-bottom: 0.5px solid #D4CFCA;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* override for full-width sections */
+    .full-width {
+      max-width: none;
+      margin: 0;
+      width: 100%;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #9A958E;
+      padding-top: 6px;
+    }
+
+    .bio-text {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: #2E2C28;
+      max-width: 600px;
+    }
+
+    .bio-text strong {
+      font-weight: 500;
+      color: #1A1A18;
+    }
+
+    /* SERVICES */
+    #services {
+      padding: 72px 48px;
+      border-bottom: 0.5px solid #D4CFCA;
+    }
+
+    .services-header {
+      display: flex;
+      align-items: baseline;
+      gap: 24px;
+      margin-bottom: 40px;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: #1A1A18;
+    }
+
+    .section-note {
+      font-size: 12px;
+      color: #9A958E;
+      font-weight: 300;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: #D4CFCA;
+      border: 0.5px solid #D4CFCA;
+      max-width: 1100px;
+      margin: 0 auto 1px;
+    }
+
+    .service-grid-secondary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: #D4CFCA;
+      border: 0.5px solid #D4CFCA;
+      border-top: none;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: #F7F4EF;
+      padding: 32px 28px;
+    }
+
+    .service-card.muted {
+      background: #F0EDE7;
+    }
+
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: #1A1A18;
+      margin-bottom: 16px;
+    }
+
+    .service-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .service-card ul li {
+      font-size: 13px;
+      font-weight: 300;
+      color: #5A5750;
+      line-height: 1.45;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .service-card ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: #B0AA9F;
+      font-size: 11px;
+      top: 2px;
+    }
+
+    /* CONTACT */
+    #contact {
+      padding: 80px 48px;
+      background: #1A1A18;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-map {
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/la-1873.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.06;
+      pointer-events: none;
+    }
+
+    .contact-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .contact-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: #F7F4EF;
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+
+    .contact-body {
+      font-size: 13px;
+      color: #6B6760;
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .contact-row-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #4A4844;
+      font-weight: 500;
+      min-width: 56px;
+      padding-top: 2px;
+    }
+
+    .contact-row-val {
+      font-size: 13px;
+      color: #C4B89A;
+      font-weight: 300;
+      line-height: 1.65;
+      text-decoration: none;
+    }
+
+    a.contact-row-val:hover { color: #F7F4EF; }
+
+    .cta-block {
+      border: 0.5px solid #2E2E2A;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 240px;
+    }
+
+    .cta-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #4A4844;
+      margin-bottom: 12px;
+    }
+
+    .cta-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      color: #F7F4EF;
+      margin-bottom: 8px;
+    }
+
+    .cta-email {
+      font-size: 13px;
+      color: #6B6760;
+      margin-bottom: 40px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: #F7F4EF;
+      color: #1A1A18;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      padding: 13px 28px;
+      text-decoration: none;
+      align-self: flex-start;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .cta-btn:hover {
+      background: #C4B89A;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0F0F0D;
+      padding: 22px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      color: #3A3A36;
+      letter-spacing: 0.04em;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 16px; }
+      .nav-links li:not(:last-child) { display: none; }
+
+      #hero { padding: 64px 20px 56px; }
+      #about { padding: 48px 20px; grid-template-columns: 1fr; gap: 16px; }
+      #services { padding: 48px 20px; }
+      .services-header { margin-bottom: 28px; }
+      .service-grid, .service-grid-secondary { grid-template-columns: 1fr; }
+
+      #contact { padding: 56px 20px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+
+      footer { padding: 20px; }
+    }
+  </style>
 </head>
-<body class="bg-white text-gray-900">
-  <!-- HEADER / NAV -->
-  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-white/70 border-b border-gray-200">
-    <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
-      <a href="#" class="font-semibold text-lg">Jason Gage Law Office</a>
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="#about" class="hover:text-gray-700">About</a>
-        <a href="#practice" class="hover:text-gray-700">Services</a>
-        <a href="#contact" class="hover:text-gray-700">Contact</a>
-        <a href="tel:9095064423" class="inline-flex items-center rounded-xl border px-3 py-1.5">Call (909) 506-4423</a>
-      </nav>
-      <button id="menuBtn" class="md:hidden inline-flex items-center rounded-xl border px-3 py-1.5"
-        aria-label="Toggle navigation" aria-controls="mobileMenu" aria-expanded="false">Menu</button>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Jason Gage Law Office</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="tel:9095064423" class="nav-cta">(909) 506-4423</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero">
+    <p class="hero-eyebrow">Attorney at Law — Los Angeles &amp; Inland Empire</p>
+    <h1 class="hero-headline">Other people<br>break it.<br><em>I help fix it.</em></h1>
+    <p class="hero-sub">Practical legal solutions for individuals and small business.</p>
+    <div class="hero-contact">
+      <a href="tel:9095064423">(909) 506-4423</a>
+      <span class="sep">·</span>
+      <a href="mailto:jason@gagelegal.com">jason@gagelegal.com</a>
     </div>
-    <div id="mobileMenu" class="md:hidden hidden border-t border-gray-200 bg-white">
-      <div class="px-4 py-3 flex flex-col gap-3 text-sm">
-        <a href="#about" class="hover:text-gray-700">About</a>
-        <a href="#practice" class="hover:text-gray-700">Services</a>
-        <a href="#contact" class="hover:text-gray-700">Contact</a>
-        <a href="tel:9095064423" class="inline-flex items-center justify-center rounded-xl border px-3 py-2">Call (909) 506-4423</a>
+  </section>
+
+  <section id="about" style="max-width:none; margin:0; width:100%; padding: 72px 48px; display:grid; grid-template-columns: 180px 1fr; gap:64px; align-items:start; border-bottom: 0.5px solid #D4CFCA;">
+    <div class="section-label">About</div>
+    <p class="bio-text">
+      Born in Los Angeles. Educated at <strong>UCLA Law</strong>. Practicing here for decades.<br><br>
+      I help people and small businesses solve problems, minimize risk, and get where they're trying to go. Clients come with one problem and usually stay.
+    </p>
+  </section>
+
+  <section id="services">
+    <div class="services-header">
+      <h2 class="section-title">Services</h2>
+      <span class="section-note">New matters welcome</span>
+    </div>
+
+    <div class="service-grid">
+      <div class="service-card">
+        <h3>Business</h3>
+        <ul>
+          <li>Partner &amp; owner disputes</li>
+          <li>UCC sales &amp; secured transactions</li>
+          <li>Commercial &amp; real-estate deals</li>
+          <li>Entity formation</li>
+          <li>Entity wind-down</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <h3>Trademarks</h3>
+        <ul>
+          <li>Federal trademark registration</li>
+          <li>Trademark disputes &amp; enforcement</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <h3>Collections</h3>
+        <ul>
+          <li>Commercial debt recovery</li>
+          <li>Judgment enforcement</li>
+        </ul>
       </div>
     </div>
-  </header>
 
-  <main class="pt-20">
-    <!-- HERO with overlay; background uses assets/hero.jpg -->
-    <section class="relative">
-      <div class="h-[68vh] min-h-[420px] md:h-[76vh] w-full relative">
-        <div class="absolute inset-0 bg-center bg-cover" style="background-image: url('assets/hero.jpg'); background-position: 50% 50%;"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-transparent"></div>
-        <div class="relative mx-auto max-w-7xl px-4 h-full flex items-end md:items-center">
-          <div class="text-white pb-10 md:pb-0">
-            <div class="text-white/90 font-semibold text-base md:text-lg mb-3">Jason Gage Law Office</div>
-            <h1 class="text-4xl md:text-6xl font-semibold leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]">
-              <span>Other people <span class="font-semibold px-2 rounded-md" style="color:#fef08a;">Break</span> it</span><br>
-              <span>I help <span class="font-semibold px-2 rounded-md" style="color:#facc15;">Fix</span> it</span>
-            </h1>
-            <p class="mt-4 text-lg md:text-xl opacity-95">Solutions for individuals and small business</p>
-            <p class="mt-3 text-sm md:text-base">
-              <a href="tel:9095064423" class="underline">(909) 506-4423</a> <span class="mx-2">·</span>
-              <a href="mailto:jgage@gagelegal.com" class="underline">jgage@gagelegal.com</a>
-            </p>
-            <div class="mt-6 flex flex-wrap gap-3">
-              <a href="tel:9095064423" class="rounded-2xl bg-white text-gray-900 px-5 py-3 font-medium">Call</a>
-              <a href="mailto:jgage@gagelegal.com" class="rounded-2xl bg-white/10 hover:bg-white/20 border border-white/40 px-5 py-3 font-medium">Email</a>
-            </div>
+    <div class="service-grid-secondary">
+      <div class="service-card muted">
+        <h3>Estate Planning</h3>
+        <ul>
+          <li>Wills &amp; trusts</li>
+          <li>Powers of attorney</li>
+          <li>Probate administration &amp; litigation</li>
+          <li>Probate-avoidance strategies</li>
+          <li>Asset-protection planning</li>
+        </ul>
+      </div>
+      <div class="service-card muted">
+        <h3>Other Matters</h3>
+        <ul>
+          <li>Personal injury &amp; fraud</li>
+          <li>Insurance disputes</li>
+          <li>Tariffs &amp; customs</li>
+        </ul>
+      </div>
+      <div class="service-card muted"></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-map"></div>
+    <div class="contact-inner">
+      <div>
+        <h2 class="contact-headline">Let's talk<br>about your situation.</h2>
+        <p class="contact-body">No intake form. No automated response. Call or email directly.</p>
+        <div class="contact-details">
+          <div class="contact-row">
+            <span class="contact-row-label">Phone</span>
+            <a href="tel:9095064423" class="contact-row-val">(909) 506-4423</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-row-label">Email</span>
+            <a href="mailto:jason@gagelegal.com" class="contact-row-val">jason@gagelegal.com</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-row-label">Address</span>
+            <span class="contact-row-val">3857 Birch St, PMB #3087<br>Newport Beach, CA 92660</span>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="mx-auto max-w-7xl px-4 py-16">
-      <div class="grid md:grid-cols-2 gap-10 items-center">
-        <div class="mx-auto w-40 sm:w-48 md:w-56 lg:w-64">
-          <div class="aspect-[3/4] overflow-hidden rounded-3xl shadow border bg-white">
-            <img src="assets/headshot.jpg" alt="Attorney headshot" class="w-full h-full object-cover" loading="lazy" decoding="async">
-          </div>
-        </div>
+      <div class="cta-block">
         <div>
-          <h2 class="text-2xl font-semibold">Jason Gage — Attorney at Law</h2>
-          <p class="mt-4 leading-relaxed">I was born in Los Angeles, I was educated at UCLA Law, and I’ve practiced here for decades—helping people and small businesses solve problems, minimize risk, and achieve their goals.</p>
-          <div class="mt-6 flex gap-3">
-            <a href="mailto:jgage@gagelegal.com" class="rounded-xl border px-4 py-2">Email</a>
-            <a href="tel:9095064423" class="rounded-xl border px-4 py-2">Call</a>
-          </div>
+          <p class="cta-label">Call direct</p>
+          <div class="cta-number">(909) 506-4423</div>
+          <div class="cta-email">jason@gagelegal.com</div>
         </div>
+        <a href="tel:9095064423" class="cta-btn">Call now</a>
       </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section id="practice" class="bg-gray-50 border-y">
-      <div class="mx-auto max-w-7xl px-4 py-16">
-        <h2 class="text-2xl font-semibold">Services</h2>
-        <p class="mt-4 max-w-3xl leading-relaxed text-gray-800">Clients come with one problem and usually stay. I handle their legal work as new issues arise.</p>
-        <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="rounded-2xl border bg-white p-6">
-            <h3 class="font-medium">Business</h3>
-            <p class="mt-2 text-sm text-gray-600">UCC sales &amp; secured transactions, trademarks, partner/owner disputes, collections, entity formation &amp; wind‑down, and commercial/real‑estate deals.</p>
-          </div>
-          <div class="rounded-2xl border bg-white p-6">
-            <h3 class="font-medium">Estate Planning</h3>
-            <p class="mt-2 text-sm text-gray-600">Wills &amp; trusts, powers of attorney, probate administration &amp; litigation, probate‑avoidance strategies, and asset‑protection planning.</p>
-          </div>
-          <div class="rounded-2xl border bg-white p-6">
-            <h3 class="font-medium">Other Issues</h3>
-            <p class="mt-2 text-sm text-gray-600">Torts (personal injury, fraud, trespass), insurance disputes, child support &amp; custody, and tariffs &amp; customs.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKETCHES under Services, above Contact -->
-    <section id="sketches" class="mx-auto max-w-7xl px-4 pb-12 pt-6">
-      <div class="grid md:grid-cols-2 gap-6">
-        <figure class="rounded-2xl border bg-white p-3 md:p-4">
-          <img src="assets/sketch-1.jpg" alt="Various Motions Argued" class="w-full max-h-[80vh] object-contain" loading="lazy" decoding="async">
-          <figcaption class="mt-2 text-sm text-gray-700">Various Motions Argued</figcaption>
-        </figure>
-        <figure class="rounded-2xl border bg-white p-3 md:p-4">
-          <img src="assets/sketch-2.jpg" alt="Witness Examination" class="w-full max-h-[80vh] object-contain" loading="lazy" decoding="async">
-          <figcaption class="mt-2 text-sm text-gray-700">Witness Examination</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- CONTACT + MAP side-by-side -->
-    <section id="contact" class="mx-auto max-w-7xl px-4 py-16">
-      <h2 class="text-2xl font-semibold">Contact</h2>
-      <div class="mt-6 grid md:grid-cols-2 items-stretch gap-6">
-        <div class="text-sm">
-          <div class="font-medium">Jason Gage Law Office</div>
-          <div>Offices in the 909—Inland Empire</div>
-          <div class="pt-2 font-medium">Mailing address:</div>
-          <div>Jason Gage, Esq.</div>
-          <div>3857 Birch St, PMB #3087</div>
-          <div>Newport Beach, CA 92660</div>
-          <div class="pt-2">
-            <a class="underline" href="tel:9095064423">(909) 506-4423</a>
-            <span class="mx-2">·</span>
-            <a class="underline" href="mailto:jgage@gagelegal.com">jgage@gagelegal.com</a>
-          </div>
-        </div>
-        <figure class="relative rounded-2xl border overflow-hidden bg-[#f5efe3] min-h-[480px]">
-          <img src="assets/la-1873.jpg" alt="Map — Downtown Los Angeles, 1873" class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async">
-        </figure>
-      </div>
-    </section>
-  </main>
-
-  <footer class="border-t">
-    <div class="mx-auto max-w-7xl px-4 py-8 text-xs text-gray-600">
-      © Jason Gage Law Office — All rights reserved.<br>
-      <span>Sketches courtesy of the Library of Congress, Prints and Photographs Division.</span>
     </div>
+  </section>
+
+  <footer>
+    <span class="footer-copy">© Jason Gage Law Office — All rights reserved.</span>
+    <span class="footer-copy">Los Angeles &amp; Inland Empire</span>
   </footer>
 
-  <script>
-    const btn = document.getElementById('menuBtn');
-    const panel = document.getElementById('mobileMenu');
-    if (btn && panel) {
-      btn.addEventListener('click', () => {
-        const expanded = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', (!expanded).toString());
-        panel.classList.toggle('hidden');
-      });
-    }
-  </script>
 </body>
 </html>
