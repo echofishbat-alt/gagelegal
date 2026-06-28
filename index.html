@@ -56,7 +56,7 @@
     text-rendering:optimizeLegibility;
   }
   a{color:inherit}
-  img{max-width:100%;display:block}
+  img{max-width:100%;height:auto;display:block}
 
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
 
@@ -86,7 +86,34 @@
     transition:background .2s,color .2s;
   }
   .nav-call:hover{background:var(--green);color:var(--paper)}
-  @media(max-width:720px){.nav-links a:not(.nav-call){display:none}}
+  .nav-right{display:flex;align-items:center;gap:26px}
+  .nav-toggle{display:none}
+  @media(max-width:720px){
+    .nav-right{gap:14px}
+    .nav-toggle{
+      display:inline-flex;flex-direction:column;justify-content:center;gap:5px;
+      width:42px;height:38px;padding:8px;background:none;border:1px solid var(--line);
+      border-radius:3px;cursor:pointer;
+    }
+    .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);transition:transform .22s,opacity .22s}
+    .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+    .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .nav-links{
+      position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;
+      gap:0;background:var(--paper);border-bottom:1px solid var(--line);
+      padding:6px 28px 16px;display:none;box-shadow:0 14px 26px -18px rgba(20,42,32,.45);
+    }
+    .nav-links.open{display:flex}
+    .nav-links a{padding:14px 2px;border-bottom:1px solid var(--line);font-size:1rem;color:var(--ink)}
+    .nav-links a:last-child{border-bottom:none}
+  }
+  /* ---- Representative Matters ---- */
+  .matters{background:var(--paper)}
+  .matters-lead{font-family:"Libre Caslon Text",serif;font-size:clamp(1.1rem,1.9vw,1.42rem);line-height:1.45;color:var(--ink);max-width:56ch;margin:0 0 30px}
+  .matter-list{list-style:none;margin:0;padding:14px 0 0;border-top:1px solid var(--line)}
+  .matter-list li{padding:19px 0;border-bottom:1px solid var(--line);color:#26342C;font-size:1rem;line-height:1.55;max-width:72ch}
+  .matter-list .m-k{display:block;font-family:"Libre Caslon Text",serif;font-size:1.18rem;color:var(--green);margin:0 0 4px}
 
   /* ---- Hero ---- */
   .hero{
@@ -319,12 +346,16 @@
     <a class="brand" href="#top">
       <b>Jason Gage</b><span>Law Office</span>
     </a>
-    <nav class="nav-links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
+    <div class="nav-right">
+      <nav class="nav-links" id="navmenu">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#matters">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
       <a class="nav-call" href="tel:+19095064423">(909) 506-4423</a>
-    </nav>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navmenu" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
 
@@ -446,6 +477,26 @@
     </div>
   </section>
 
+  <!-- REPRESENTATIVE MATTERS -->
+  <section class="matters" id="matters">
+    <div class="wrap">
+      <div class="sec-inner rail-light">
+        <p class="eyebrow">Representative Matters</p>
+        <h2>The work itself.</h2>
+        <p class="matters-lead">A practice is best described by what it has handled. A sample, drawn from closed matters:</p>
+        <ul class="matter-list">
+          <li><span class="m-k">Cross-border commercial dispute</span>Represented a foreign corporation against a California company &mdash; judgment at trial, affirmed on appeal, then enforced.</li>
+          <li><span class="m-k">Trademark portfolio</span>Prosecuted multiple federal marks for apparel and consumer-goods companies, answered USPTO office actions, and resolved a competing-mark dispute by settlement and assignment.</li>
+          <li><span class="m-k">International brand work</span>Structured trademark, licensing, and production agreements, coordinating rights with overseas trademark owners.</li>
+          <li><span class="m-k">Secured transactions</span>Perfected security interests in consigned jewelry inventory across several U.S. states and Canada.</li>
+          <li><span class="m-k">Contested probate</span>Removal of a personal representative and a dispute over ownership of estate property.</li>
+          <li><span class="m-k">Outside counsel</span>Formation, commercial agreements, a landlord dispute, and immigration for the owner of a closely held business.</li>
+          <li><span class="m-k">Trial record</span>Cases tried to verdict, by bench and by jury, with many more resolved through mediation and arbitration.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <!-- INDUSTRIES -->
   <section class="industries">
     <div class="wrap">
@@ -543,6 +594,29 @@
     reveals.forEach(function(el){ io.observe(el); });
   } else {
     reveals.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // mobile nav toggle
+  var navToggle = document.querySelector('.nav-toggle');
+  var navMenu = document.getElementById('navmenu');
+  if(navToggle && navMenu){
+    navToggle.addEventListener('click', function(){
+      var open = navMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    navMenu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded','false');
+      });
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && navMenu.classList.contains('open')){
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded','false');
+        navToggle.focus();
+      }
+    });
   }
 </script>
 </body>
