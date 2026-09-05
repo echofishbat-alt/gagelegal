@@ -217,33 +217,6 @@
   }
   @media(max-width:760px){.about-grid{grid-template-columns:1fr;gap:40px}.portrait{max-width:280px}}
 
-  /* ---- Services ---- */
-  .services{background:var(--green);color:var(--paper-on-dark)}
-  .services h2{color:#fff}
-  .services .eyebrow{color:var(--brass-bright)}
-  .services .eyebrow::before{background:var(--brass-bright)}
-  .services .sec-inner .rail-light::after{background:rgba(239,233,218,.18)}
-  .claim{max-width:62ch;margin:0 0 6px}
-  .claim .lead{font-family:"Libre Caslon Text",serif;font-size:clamp(1.15rem,2vw,1.55rem);line-height:1.42;color:#fff;margin:0;font-style:italic}
-  .catalog-label{margin-top:54px}
-  .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid rgba(239,233,218,.16)}
-  .svc{
-    padding:34px 34px 34px 0;border-bottom:1px solid rgba(239,233,218,.16);
-  }
-  .svc:nth-child(odd){padding-right:46px;border-right:1px solid rgba(239,233,218,.16)}
-  .svc:nth-child(even){padding-left:46px}
-  .svc-label{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-bright);margin:0 0 12px}
-  .svc h3{font-family:"Libre Caslon Text",serif;font-weight:400;font-size:1.5rem;margin:0 0 16px;color:#fff}
-  .svc ul{margin:0;padding:0;list-style:none}
-  .svc li{position:relative;padding-left:18px;margin:7px 0;color:var(--paper-on-dark);font-size:.96rem;opacity:.9}
-  .svc li::before{content:"";position:absolute;left:0;top:11px;width:5px;height:5px;background:var(--brass);border-radius:50%}
-  @media(max-width:760px){
-    .svc-grid{grid-template-columns:1fr}
-    .svc:nth-child(odd){padding-right:0;border-right:none}
-    .svc:nth-child(even){padding-left:0}
-    .svc{padding:30px 0}
-  }
-
   /* ---- Approach band ---- */
   .approach{background:var(--paper-dim)}
   .approach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:38px}
@@ -367,7 +340,6 @@
     <div class="nav-right">
       <nav class="nav-links" id="navmenu">
         <a href="#about">About</a>
-        <a href="#services">Services</a>
         <a href="#matters">Work</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -389,11 +361,12 @@
         <p class="lede">Practical legal solutions for individuals and small business — handled directly, by the attorney you actually hired.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="tel:+19095064423">Call direct &middot; (909) 506-4423</a>
-          <a class="btn btn-ghost" href="#services">See areas of practice</a>
+          <a class="btn btn-ghost" href="#matters">See representative matters</a>
         </div>
         <div class="hero-meta">
           <span><b>Pomona College</b> — Claremont, 1990</span>
           <span><b>UCLA Law</b> — J.D., 1995</span>
+          <span><b>Admitted</b> — State Bar of California</span>
           <span><b>Beverly Hills &amp; Century City</b> — practiced</span>
           <span><b>Southern California</b> — today</span>
         </div>
@@ -413,7 +386,7 @@
             
           </div>
           <div class="about-body">
-            <p class="first">Born in Los Angeles. Pomona College, 1990. UCLA Law, 1995. In practice here ever since.</p>
+            <p class="first">Born in Los Angeles. Pomona College, 1990. UCLA Law, 1995. Admitted to the State Bar of California, and in practice here ever since.</p>
             <p>For years I practiced in Beverly Hills and Century City — where much of Southern California's most demanding legal work gets done — and I've carried that standard into a practice built for individuals and small business.</p>
             <p>The work is practical and direct: I take the matter you bring me, tell you plainly where you stand, and handle it myself — no layers, no handoffs, no junior associate you've never met. That's why clients come with one problem —</p>
             <blockquote class="pullquote">&ldquo;and usually stay.&rdquo;</blockquote>
@@ -424,76 +397,6 @@
   </section>
 
   <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="wrap">
-      <div class="sec-inner rail-light">
-        <p class="eyebrow">Areas of Practice</p>
-        <h2>No specialty. That&rsquo;s the point.</h2>
-
-        <div class="claim">
-          <p class="lead">If you or your business is having a legal problem, I&rsquo;ve probably handled one like it before. And I will tell you straightforwardly if it&rsquo;s outside what I do.</p>
-        </div>
-
-        <p class="eyebrow catalog-label">Matters I&rsquo;ve handled</p>
-        <div class="svc-grid">
-
-          <div class="svc">
-            <p class="svc-label">Litigation &amp; Trials</p>
-            <h3>Disputes, tried to verdict</h3>
-            <ul>
-              <li>Business &amp; commercial disputes</li>
-              <li>Personal injury &amp; tort claims &mdash; plaintiff and defense</li>
-              <li>Fraud claims &amp; defense</li>
-              <li>Unfair competition &amp; false advertising</li>
-              <li>Insurance, lender &amp; banking disputes</li>
-              <li>Mediation, arbitration &amp; jury trials</li>
-            </ul>
-          </div>
-
-          <div class="svc">
-            <p class="svc-label">Business &amp; Transactions</p>
-            <h3>&ldquo;Can you look at this for me?&rdquo;</h3>
-            <ul>
-              <li>Contract review &amp; drafting</li>
-              <li>Buying or selling a business</li>
-              <li>Leases &amp; commercial agreements</li>
-              <li>Formation, governance &amp; operating agreements</li>
-              <li>Sales, M&amp;A &amp; membership-interest transfers</li>
-              <li>UCC &amp; secured transactions</li>
-              <li>Collections &amp; judgment enforcement</li>
-            </ul>
-          </div>
-
-          <div class="svc">
-            <p class="svc-label">Trademarks &amp; Copyright</p>
-            <h3>Brands, protected</h3>
-            <ul>
-              <li>Federal trademark registration &amp; prosecution</li>
-              <li>Office-action responses</li>
-              <li>Copyright registration &amp; disputes</li>
-              <li>Multi-brand portfolios</li>
-              <li>Foreign-language &amp; international marks</li>
-              <li>Oppositions &amp; enforcement</li>
-            </ul>
-          </div>
-
-          <div class="svc">
-            <p class="svc-label">Estate, Property &amp; Personal</p>
-            <h3>People and what they own</h3>
-            <ul>
-              <li>Wills &amp; trusts</li>
-              <li>Probate &amp; trust administration</li>
-              <li>Real estate &amp; title</li>
-              <li>Commercial landlord&ndash;tenant &amp; evictions</li>
-              <li>Employment &amp; wage-and-hour</li>
-              <li>Immigration</li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- REPRESENTATIVE MATTERS -->
   <section class="matters" id="matters">
@@ -509,7 +412,6 @@
           <li><span class="m-k">Secured transactions</span>Perfected security interests in consigned jewelry inventory across several U.S. states and Canada.</li>
           <li><span class="m-k">Contested probate</span>Removal of a personal representative and a dispute over ownership of estate property.</li>
           <li><span class="m-k">Outside counsel</span>Formation, commercial agreements, a landlord dispute, and immigration for the owner of a closely held business.</li>
-          <li><span class="m-k">Trial record</span>Cases tried to verdict, by bench and by jury, with many more resolved through mediation and arbitration.</li>
         </ul>
       </div>
     </div>
@@ -525,7 +427,6 @@
           <li>Jewelry</li>
           <li>Garment</li>
           <li>Real Estate</li>
-          <li>Retail</li>
           <li>Agriculture</li>
         </ul>
       </div>
